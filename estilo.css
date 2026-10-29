@@ -1,0 +1,101 @@
+:root {
+  --fundo: #f4f7f5;
+  --cartao: #ffffff;
+  --texto: #1f2a24;
+  --suave: #5b6b62;
+  --borda: #dde5e0;
+  --verde: #1f9d55;
+  --verde-escuro: #167a42;
+  --verde-claro: #e6f5ec;
+  --amarelo: #fff6dc;
+  --vermelho: #c0392b;
+  --vermelho-claro: #fdecea;
+  --raio: 14px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--fundo); color: var(--texto); font: 18px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--verde-escuro); }
+code { background: #eef2ef; padding: 1px 6px; border-radius: 6px; font-size: .9em; word-break: break-all; }
+.oculto { display: none !important; }
+.centro { text-align: center; }
+.pequeno { font-size: 15px; color: var(--suave); }
+
+.topo { display: flex; align-items: center; gap: 10px; max-width: 640px; margin: 0 auto; padding: 18px 16px 8px; }
+.marca { font-weight: 700; font-size: 22px; color: var(--verde-escuro); flex: 1; }
+main { max-width: 640px; margin: 0 auto; padding: 8px 16px 48px; }
+main.largo { max-width: 1000px; }
+
+.cartao { background: var(--cartao); border: 1px solid var(--borda); border-radius: var(--raio); padding: 24px 22px; margin-top: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.03); }
+h1 { font-size: 26px; line-height: 1.25; margin: 0 0 12px; }
+h2 { font-size: 20px; margin: 22px 0 8px; }
+
+.progresso { list-style: none; display: flex; gap: 6px; padding: 0; margin: 10px 0 0; }
+.progresso li { flex: 1; text-align: center; font-size: 13px; color: var(--suave); }
+.progresso li span { display: block; margin: 0 auto 4px; width: 100%; height: 6px; border-radius: 4px; background: var(--borda); font-size: 0; }
+.progresso li.feito span { background: var(--verde); }
+.progresso li.atual span { background: var(--verde); opacity: .55; }
+.progresso li.atual { color: var(--texto); font-weight: 600; }
+
+label { display: block; margin: 14px 0; font-weight: 600; }
+input[type=text], input:not([type]), input[type=email], input[type=password], input[type=tel] {
+  display: block; width: 100%; margin-top: 6px; padding: 13px 14px; font: inherit; font-weight: 400;
+  border: 1.5px solid var(--borda); border-radius: 10px; background: #fff; color: var(--texto);
+}
+input:focus { outline: 3px solid rgba(31,157,85,.25); border-color: var(--verde); }
+.linha { display: flex; gap: 8px; align-items: center; }
+.linha input { flex: 1; }
+.caixa { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; }
+.caixa input { width: 22px; height: 22px; margin-top: 3px; accent-color: var(--verde); flex: none; }
+fieldset.opcoes { border: 0; padding: 0; margin: 14px 0; }
+fieldset.opcoes legend { font-weight: 600; margin-bottom: 4px; }
+fieldset.opcoes label { font-weight: 400; margin: 8px 0; display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+fieldset.opcoes input { accent-color: var(--verde); width: 20px; height: 20px; margin-top: 4px; }
+
+.botao { display: block; width: 100%; margin-top: 18px; padding: 15px; font: inherit; font-weight: 700; color: #fff;
+  background: var(--verde); border: 0; border-radius: 12px; cursor: pointer; }
+.botao:hover { background: var(--verde-escuro); }
+.botao:disabled { background: #a9c9b6; cursor: not-allowed; }
+.botao.secundario { background: #fff; color: var(--verde-escuro); border: 2px solid var(--verde); }
+.botao.perigoso { background: var(--vermelho); }
+.botao.pequeno-btn { display: inline-block; width: auto; margin: 0; padding: 8px 14px; font-size: 15px; }
+.link { background: none; border: 0; color: var(--verde-escuro); font: inherit; font-size: 15px; text-decoration: underline; cursor: pointer; padding: 6px 0; }
+
+.aviso { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: var(--vermelho-claro); color: #7b241c; border: 1px solid #f3c2bc; }
+.aviso.ok { background: var(--verde-claro); color: #145c34; border-color: #bfe5cf; }
+.dica { background: var(--amarelo); border-radius: 12px; padding: 4px 16px; margin: 16px 0; font-size: 16px; }
+.termos { max-height: 320px; overflow-y: auto; border: 1px solid var(--borda); border-radius: 12px; padding: 4px 16px; font-size: 16px; background: #fbfcfb; }
+
+.passos { padding-left: 24px; }
+.passos li { margin: 8px 0; }
+.tutorial { border: 1px solid var(--borda); border-radius: 12px; padding: 10px 16px; margin: 14px 0; }
+.tutorial summary { font-weight: 700; cursor: pointer; }
+.codigo { font: 700 36px/1.2 ui-monospace, Consolas, monospace; letter-spacing: 4px; background: var(--verde-claro); border-radius: 12px; padding: 16px; margin: 10px 0; }
+#img-qr { border: 1px solid var(--borda); border-radius: 12px; max-width: 100%; height: auto; background: #fff; }
+
+.resumo { list-style: none; padding: 0; }
+.resumo li { padding: 10px 0; border-bottom: 1px solid var(--borda); }
+.perigo { margin-top: 26px; border-top: 1px solid var(--borda); padding-top: 14px; }
+.perigo summary { color: var(--vermelho); cursor: pointer; font-weight: 600; }
+
+/* Painel do administrador */
+.tabela { width: 100%; border-collapse: collapse; font-size: 15px; }
+.tabela th, .tabela td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--borda); vertical-align: top; }
+.tabela th { color: var(--suave); font-weight: 600; }
+.selo { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--borda); white-space: nowrap; }
+.selo.ok { background: var(--verde-claro); color: #145c34; }
+.selo.alerta { background: var(--amarelo); color: #7a5a00; }
+.selo.ruim { background: var(--vermelho-claro); color: #7b241c; }
+.acoes { display: flex; flex-wrap: wrap; gap: 6px; }
+.acoes button { font-size: 14px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--borda); background: #fff; cursor: pointer; }
+.acoes button.perigoso { color: var(--vermelho); border-color: #f3c2bc; }
+.link-gerado { word-break: break-all; background: var(--verde-claro); padding: 12px; border-radius: 10px; font-family: ui-monospace, Consolas, monospace; font-size: 14px; }
+.rolavel { overflow-x: auto; }
+@media (max-width: 520px) {
+  body { font-size: 17px; }
+  .cartao { padding: 20px 16px; }
+  .progresso li { font-size: 11px; }
+  h1 { font-size: 23px; }
+}
+.topo.largo { max-width: 1000px; }
+.espaco { margin-top: 16px; }

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Agendinha · Voltando do Google</title>
+<link rel="icon" href="logo.svg">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo">
+  <img src="logo.svg" alt="" width="36" height="36">
+  <span class="marca">Agendinha</span>
+</header>
+<main>
+<section class="cartao">
+  <h1 id="titulo">Voltando para a Agendinha…</h1>
+  <p id="texto">Só um instante, estou terminando a conexão com o seu Google.</p>
+  <div id="reserva" hidden>
+    <p>Toque em <strong>Copiar</strong> e cole o endereço na conversa da Agendinha no WhatsApp:</p>
+    <textarea id="endereco" readonly rows="4" style="width:100%"></textarea>
+    <p><button id="copiar" type="button">Copiar</button></p>
+  </div>
+</section>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var titulo = document.getElementById('titulo'), texto = document.getElementById('texto');
+  if (q.get('error')) {
+    titulo.textContent = 'Você não permitiu o acesso';
+    texto.textContent = 'Sem a permissão da agenda a Agendinha não consegue ajudar. Volte ao WhatsApp e peça o link de novo quando quiser tentar outra vez.';
+    return;
+  }
+  var state = q.get('state') || '', code = q.get('code');
+  var host = state.indexOf('~') > -1 ? state.split('~').pop() : '';
+  // Só encaminha para endereços temporários da própria Agendinha (trycloudflare)
+  if (code && /^[a-z0-9-]+\.trycloudflare\.com$/i.test(host)) {
+    location.replace('https://' + host + '/oauth/google' + location.search);
+    return;
+  }
+  titulo.textContent = 'Quase lá';
+  texto.textContent = 'Não consegui avisar a Agendinha sozinho.';
+  var box = document.getElementById('endereco');
+  box.value = location.href;
+  document.getElementById('reserva').hidden = false;
+  document.getElementById('copiar').onclick = function () {
+    box.select();
+    try { navigator.clipboard.writeText(box.value); } catch (e) { document.execCommand('copy'); }
+    this.textContent = 'Copiado!';
+  };
+})();
+</script>
+</body>
+</html>
